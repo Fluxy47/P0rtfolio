@@ -3,6 +3,30 @@
 @tailwind utilities;
 
 * {
-  background-color: #ffecdd;
+  /* background-color: #ffecdd; */
   box-sizing: border-box;
+}
+
+.arrow {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  fill: #000; /* Change from #fff to #000 */
+  cursor: pointer;
+}
+
+.arrow--left {
+  left: 5px;
+}
+
+.arrow--right {
+  left: auto;
+  right: 5px;
+}
+
+.arrow--disabled {
+  fill: rgba(0, 0, 0, 0.5); /* Change to a semi-transparent black if desired */
 }
