@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import aboutpic from "../assets/aboutpic.jpg";
+import useTextRevealAnimation from "../utils/useTextRevealAnimation";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -18,6 +19,7 @@ function AboutMe() {
         trigger: container,
         scrub: true,
         pin: false,
+        markers: true,
       },
     });
 
@@ -34,15 +36,24 @@ function AboutMe() {
     );
   }, []);
 
-  return (
-    <div className="min-h-screen flex border-2 border-black items-start justify-evenly">
-      <div className="flex flex-col items-center justify-start gap-[2em]">
-        <h1 className="text-[3em] text-[#B22222] font-semibold tracking-wide">
-          About Me
-        </h1>
+  // const { AnimatedText } = useTextRevealAnimation("About Me", {
+  //   containerClass: "custom-container-class",
+  //   textClass: "text-[3em] text-[#B22222] font-bold tracking-wide",
+  // });
 
-        <div className="max-w-2xl ">
-          <p className="text-[1.8em] leading-relaxed">
+  const { AnimatedText } = useTextRevealAnimation(
+    "About Me",
+    "text-[3em] text-[#B22222] font-bold tracking-wide"
+  ); // Pass in the text
+  // className="text-[3em] text-[#B22222] font-bold tracking-wide"
+
+  return (
+    <div className="min-h-screen flex items-start justify-evenly">
+      <div className="flex flex-col items-center justify-start gap-[2em]">
+        <AnimatedText />
+
+        <div className="max-w-[40vw]  ">
+          <p className="text-[1.8em] leading-loose ">
             I am a dedicated game designer and developer with a profound passion
             for creating immersive gaming experiences. With two years of
             professional experience, I have successfully published four games,
@@ -58,8 +69,12 @@ function AboutMe() {
       </div>
       <div
         ref={imageCont}
-        className="overflow-hidden border-2 border-red-950 w-full lg:max-w-[40%]  flex justify-center">
-        <img ref={imageRef} src={aboutpic} className=" w-full" />
+        className="overflow-hidden bg-[red] border-2 border-red-950 w-full lg:max-w-[40%] flex justify-center">
+        <img
+          ref={imageRef}
+          src={aboutpic}
+          className="h-full w-full object-cover"
+        />
       </div>
     </div>
   );

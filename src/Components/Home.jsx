@@ -1,15 +1,20 @@
 import React from "react";
 import { motion } from "framer-motion";
-
+import useTextRevealAnimation from "../utils/useTextRevealAnimation";
+// bg-[#FFE4C2]
 function Home() {
+  const { AnimatedText } = useTextRevealAnimation(
+    "Muhammad Asad",
+    "relative text-[#B22222] text-[10vw] tracking-wide font-bold"
+  ); // Pass in the text
   return (
-    <section className="relative min-h-screen w-full bg-[#FFE4C2]">
-      <motion.div
-        // initial={{ y: "100vh" }}
-        // animate={{ y: 0 }}
+    <section className="relative min-h-screen w-full bg-[#ffecdd]">
+      {/* <motion.div
+         initial={{ y: "100vh" }}
+         animate={{ y: 0 }}
         transition={{ delay: 1 }}
         className="absolute inset-0 bg-[#ffecdd] z-[1]"
-      />
+      /> */}
       <section className="flex w-full items-center justify-between z-20">
         <div className="flex ml-[40px] mt-[20px] items-center justify-center gap-x-[2.2em] text-[#B22222] font-semibold tracking-wide text-[17px] z-20">
           <h2>Game Dev</h2>
@@ -27,7 +32,12 @@ function Home() {
           <h2>Loreus polerum</h2>
         </div>
       </section>
-      <div className="flex flex-col absolute bottom-14 w-full z-20">
+
+      <section className="absolute top-[35%] left-1/2 -translate-x-1/2  -translate-y-1/2 w-full z-20 flex justify-center items-center">
+        <AnimatedText />
+      </section>
+
+      <div className="flex flex-col absolute bottom-14 w-[95%] mx-auto left-1/2 -translate-x-1/2 z-20">
         <section className="flex items-start justify-start w-full">
           <div className="max-w-xs p-4 flex-shrink-0 leading-tight">
             <p className="text-[#B22222] text-[24px]">
@@ -99,3 +109,54 @@ export default Home;
 //     </h1>
 //   </section>
 // </div>
+
+{
+  /* <section className="absolute top-[35%] left-1/2 -translate-x-1/2  -translate-y-1/2 w-full z-20 flex justify-center items-center">
+  <h1 className="text-[#B22222] text-[10vw] tracking-wide font-bold">
+    M
+    <motion.span
+      initial={{ top: "25vh" }}
+      animate={{ top: 0 }}
+      transition={{
+        duration: 1,
+        ease: [0.6, 0.01, -0.05, 0.95],
+      }}
+      className="relative">
+      u
+    </motion.span>
+    ham
+    <motion.span
+      initial={{ top: "25vh" }}
+      animate={{ top: 0 }}
+      transition={{
+        duration: 1,
+        ease: [0.6, 0.01, -0.05, 0.95],
+      }}
+      className="relative">
+      m
+    </motion.span>
+    <motion.span
+      initial={{ top: "25vh" }}
+      animate={{ top: 0 }}
+      transition={{
+        duration: 1,
+        ease: [0.6, 0.01, -0.05, 0.95],
+      }}
+      className="relative">
+      a
+    </motion.span>
+    d As
+    <motion.span
+      initial={{ top: "25vh" }}
+      animate={{ top: 0 }}
+      transition={{
+        duration: 1,
+        ease: [0.6, 0.01, -0.05, 0.95],
+      }}
+      className="relative">
+      a
+    </motion.span>
+    d
+  </h1>
+</section>; */
+}
