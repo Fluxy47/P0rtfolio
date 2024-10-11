@@ -1,27 +1,21 @@
 import React from "react";
 
-function Card() {
+function Card({ item }) {
   const arr = ["Unity", "C++", "Html/Css", "Javascript", "Vue.js"];
   const arr2 = ["Vuetify", "Flutter", "Dart", "Bootstrap", "Blender"];
 
   return (
     <div className="border-2 border-black flex justify-center items-center">
       <section className="bg-gradient-to-t from-[#92022E] to-[#F45849] min-h-[350px] xl:w-[60%] flex">
-        <div className="w-[40%] bg-[blue]"></div>
+        <div className="w-[40%]  border-r-4 border-black">
+          <img src={item.img} />
+        </div>
 
         {/* <div className="w-[5px] hidden md:block absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-gray-700 h-[80%]" /> */}
 
-        <div className="w-[60%] bg-[yellow] flex justify-center items-center">
-          <div className="max-w-lg border-2 border-black">
-            <p
-              style={{
-                fontSize: "clamp(0.9375rem, 0.8125rem + 0.625vw, 1.5625rem)",
-              }}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis
-              tincidunt ex. Quisque malesuada sodales orci, ac condimentum nisi
-              commodo at.
-            </p>
-          </div>
+        <div className="w-[60%] flex flex-col border-2 border-[blue] justify-start items-center">
+          <h1 className="text-[2.5em]">{item.Title}</h1>
+          <p>{item.Description}</p>
         </div>
       </section>
     </div>

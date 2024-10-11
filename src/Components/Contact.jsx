@@ -1,28 +1,41 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 function Contact() {
+  const [width, setWidth] = useState(0);
+  useEffect(() => {
+    const handleResize = () => {
+      setWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+    // Get initial width
+    handleResize();
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
   return (
     <div className="min-h-screen flex justify-center items-center">
-      <section className="flex border-2 border-black">
-        <div className="flex flex-col items-end border-2 border-[red]">
-          <div className="min-w-[500px] border-2 border-[yellow] flex items-end justify-end">
-            <h1 className="text-[3em]">
+      <section className="flex flex-wrap justify-evenly items-start gap-[30px] w-[90vw] ">
+        <div className="flex flex-col gap-[10px] items-center lg:items-end">
+          <div className="min-w-[300px] flex items-start lg:items-end justify-start lg:justify-end">
+            <h1 className="text-[3em] text-[#B22222] font-bold leading-tight">
               Need a quote <br /> for a project?
               <br /> Get in Touch...
             </h1>
           </div>
 
-          <div className="max-w-[250px] border-2 border-[black]">
+          <div className="max-w-[250px]">
             <p className="text-base">
-              {" "}
-              When working with me you will get a modern website that is
+              When working with me, you will get a modern website that is
               responsive, secure, meets the needs of your clients, reflects your
-              brand and its values and stands out among competitors
+              brand and its values, and stands out among {width}
             </p>
           </div>
         </div>
 
-        <form class="container p-4">
+        <form className="min-w-[40%] max-w-[100%] mt-[-40px] p-4">
           <div className="inputbox">
             <ion-icon name="mail-outline"></ion-icon>
             <input type="Name" required name="user_name" />
@@ -39,8 +52,9 @@ function Contact() {
             <label>Message</label>
           </div>
           <button
-            class="w-full px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-700"
-            type="submit">
+            className="w-full px-4 py-2 bg-[#B22222] text-white rounded-lg mt-[30px]"
+            type="submit"
+          >
             Submit
           </button>
         </form>

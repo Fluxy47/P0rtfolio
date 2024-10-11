@@ -3,6 +3,7 @@ import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
 import Arrow from "./Arrow";
 import Card from "./Card";
+import { ProjectArr } from "../utils/Constant";
 
 const Projects = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -24,14 +25,13 @@ const Projects = () => {
     <div className="min-h-screen flex justify-center items-center relative">
       <div
         ref={sliderRef}
-        className="keen-slider w-[80%] lg:w-[70%] xl:w-[60%] min-h-[200px] border-2 border-[red]">
-        {Array(6)
-          .fill(0)
-          .map((_, index) => (
-            <div className="keen-slider__slide" key={index}>
-              <Card />
-            </div>
-          ))}
+        className="keen-slider w-[80%] lg:w-[70%] xl:w-[60%] min-h-[200px] border-2 border-[red]"
+      >
+        {ProjectArr.map((item, index) => (
+          <div className="keen-slider__slide" key={index}>
+            <Card item={item} />
+          </div>
+        ))}
       </div>
       {loaded && instanceRef.current && (
         <>

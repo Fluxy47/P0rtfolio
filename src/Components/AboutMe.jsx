@@ -69,12 +69,9 @@ function AboutMe() {
       </div>
       <div
         ref={imageCont}
-        className="overflow-hidden bg-[red] border-2 border-red-950 w-full lg:max-w-[40%] flex justify-center">
-        <img
-          ref={imageRef}
-          src={aboutpic}
-          className="h-full w-full object-cover"
-        />
+        className="overflow-hidden bg-[red] border-2 border-red-950 w-full lg:max-w-[40%] flex justify-center"
+      >
+        <img ref={imageRef} src={aboutpic} className="w-full object-cover" />
       </div>
     </div>
   );

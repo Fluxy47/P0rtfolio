@@ -16,7 +16,8 @@ const useTextRevealAnimation = (text, textclass, options = {}) => {
   const AnimatedText = () => (
     <div
       ref={ref}
-      className="relative w-full overflow-hidden flex justify-center items-center">
+      className="relative w-full overflow-hidden flex justify-center items-center"
+    >
       {/* Masking element (pseudo-element equivalent) */}
       <motion.div
         key={key} // Change key to restart animation
@@ -29,10 +30,11 @@ const useTextRevealAnimation = (text, textclass, options = {}) => {
       {/* Text with animation */}
       <motion.h1
         key={key} // Change key to restart letter spacing animation
-        initial={{ letterSpacing: "10px" }}
+        initial={{ letterSpacing: "5px" }}
         animate={{ letterSpacing: 0 }}
         transition={{ duration: 1, ease: "easeOut", delay: 1.3 }}
-        className={`${textclass}`}>
+        className={`${textclass}`}
+      >
         {text}
       </motion.h1>
     </div>

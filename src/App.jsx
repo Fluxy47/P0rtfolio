@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Home from "./Components/Home";
 import About from "./Components/About";
 import Help from "./Components/Help";
@@ -11,10 +11,15 @@ import Divider from "./Components/Divider";
 import Contact from "./Components/Contact";
 import Footer from "./Components/Footer";
 import Loader from "./Components/Loader";
+import NavBar from "./Components/NavBar";
+import { AnimatePresence } from "framer-motion";
 
 gsap.registerPlugin(ScrollTrigger);
 
 function App() {
+  const [DisplayNav, setDisplayNav] = useState(false);
+  const [Loaded, setLoaded] = useState(false);
+  console.log("nav", DisplayNav);
   useEffect(() => {
     const lenis = new Lenis({
       duration: 1,
@@ -47,17 +52,28 @@ function App() {
     requestAnimationFrame(raf);
   }, []);
 
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      setLoaded(true);
+    }, 6000); // 6 seconds in milliseconds
+
+    return () => clearTimeout(timeoutId);
+  }, []);
+
   return (
     <div className="bg-[#ffecdd]">
-      <Loader />
-      {/* <Home />
+      {!Loaded && <Loader />}
+
+      <AnimatePresence mode="wait">{DisplayNav && <NavBar />}</AnimatePresence>
+
+      <Home setDisplayNav={setDisplayNav} />
       <About />
       <AboutMe />
       <Help />
       <Projects />
       <Divider />
       <Contact />
-      <Footer /> */}
+      <Footer />
     </div>
   );
 }
