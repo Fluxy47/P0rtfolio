@@ -22,11 +22,12 @@ const Projects = () => {
   });
 
   return (
-    <div className="min-h-screen flex justify-center items-center relative">
+    <section
+      id="Project"
+      className="min-h-screen flex justify-center items-center relative">
       <div
         ref={sliderRef}
-        className="keen-slider w-[80%] lg:w-[70%] xl:w-[60%] min-h-[200px] border-2 border-[red]"
-      >
+        className="keen-slider w-[80%] lg:w-[70%] xl:w-[60%] min-h-[200px]">
         {ProjectArr.map((item, index) => (
           <div className="keen-slider__slide" key={index}>
             <Card item={item} />
@@ -50,7 +51,7 @@ const Projects = () => {
           />
         </>
       )}
-    </div>
+    </section>
   );
 };
 

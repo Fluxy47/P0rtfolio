@@ -16,8 +16,10 @@ function Contact() {
     };
   }, []);
   return (
-    <div className="min-h-screen flex justify-center items-center">
-      <section className="flex flex-wrap justify-evenly items-start gap-[30px] w-[90vw] ">
+    <section
+      id="ContactMe"
+      className="min-h-screen flex justify-center items-center mt-[15%] md:mt-0">
+      <section className="flex flex-wrap justify-evenly items-start gap-[30px] w-[90vw]">
         <div className="flex flex-col gap-[10px] items-center lg:items-end">
           <div className="min-w-[300px] flex items-start lg:items-end justify-start lg:justify-end">
             <h1 className="text-[3em] text-[#B22222] font-bold leading-tight">
@@ -35,7 +37,7 @@ function Contact() {
           </div>
         </div>
 
-        <form className="min-w-[40%] max-w-[100%] mt-[-40px] p-4">
+        <form className="min-w-[90%] md:min-w-[40%]  mt-[-40px] p-4">
           <div className="inputbox">
             <ion-icon name="mail-outline"></ion-icon>
             <input type="Name" required name="user_name" />
@@ -53,13 +55,12 @@ function Contact() {
           </div>
           <button
             className="w-full px-4 py-2 bg-[#B22222] text-white rounded-lg mt-[30px]"
-            type="submit"
-          >
+            type="submit">
             Submit
           </button>
         </form>
       </section>
-    </div>
+    </section>
   );
 }
 

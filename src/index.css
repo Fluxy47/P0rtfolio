@@ -7,6 +7,34 @@
   box-sizing: border-box;
 }
 
+/* For WebKit browsers (Chrome, Safari) */
+::-webkit-scrollbar {
+  width: 12px; /* Adjust the width as needed */
+  background: #ffecdd; /* Make the track invisible */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #b22222; /* Color of the scrollbar */
+  border-radius: 10px; /* Rounded corners */
+}
+
+/* For Firefox */
+.scrollable {
+  scrollbar-width: thin; /* Make the scrollbar thin */
+  scrollbar-color: #b22222 transparent; /* Set scrollbar color and track color */
+}
+
+/* For Edge */
+::-ms-scrollbar {
+  width: 12px;
+  background: transparent; /* Make the track invisible */
+}
+
+::-ms-scrollbar-thumb {
+  background: #b22222; /* Color of the scrollbar */
+  border-radius: 10px; /* Rounded corners */
+}
+
 .arrow {
   width: 30px;
   height: 30px;

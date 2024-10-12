@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Home from "./Components/Home";
 import About from "./Components/About";
 import Help from "./Components/Help";
@@ -19,6 +19,7 @@ gsap.registerPlugin(ScrollTrigger);
 function App() {
   const [DisplayNav, setDisplayNav] = useState(false);
   const [Loaded, setLoaded] = useState(false);
+  const lenisRef = useRef(null);
   console.log("nav", DisplayNav);
   useEffect(() => {
     const lenis = new Lenis({
@@ -30,10 +31,6 @@ function App() {
       wheelMultiplier: 1,
       infinite: false,
       autoResize: true,
-    });
-
-    lenis.on("scroll", (e) => {
-      console.log(e);
     });
 
     lenis.on("scroll", ScrollTrigger.update);
@@ -50,21 +47,30 @@ function App() {
     }
 
     requestAnimationFrame(raf);
+    lenisRef.current = lenis;
+    // Delay GSAP's ScrollTrigger refresh to ensure Lenis calculations are ready
+    setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 1000); // Adjust the delay if necessary
   }, []);
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       setLoaded(true);
-    }, 6000); // 6 seconds in milliseconds
+    }, 3000); // 6 seconds in milliseconds
 
     return () => clearTimeout(timeoutId);
   }, []);
 
   return (
-    <div className="bg-[#ffecdd]">
-      {!Loaded && <Loader />}
+    <div className="bg-[#ffecdd] min-h-screen">
+      <AnimatePresence mode="wait">
+        {!Loaded && <Loader />}
 
-      <AnimatePresence mode="wait">{DisplayNav && <NavBar />}</AnimatePresence>
+        {DisplayNav && (
+          <NavBar lenis={lenisRef.current} setDisplayNav={setDisplayNav} />
+        )}
+      </AnimatePresence>
 
       <Home setDisplayNav={setDisplayNav} />
       <About />

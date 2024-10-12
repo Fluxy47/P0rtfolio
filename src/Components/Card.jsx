@@ -1,21 +1,44 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 function Card({ item }) {
-  const arr = ["Unity", "C++", "Html/Css", "Javascript", "Vue.js"];
-  const arr2 = ["Vuetify", "Flutter", "Dart", "Bootstrap", "Blender"];
+  const [width, setWidth] = useState(0);
+  useEffect(() => {
+    const handleResize = () => {
+      setWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+    // Get initial width
+    handleResize();
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   return (
-    <div className="border-2 border-black flex justify-center items-center">
-      <section className="bg-gradient-to-t from-[#92022E] to-[#F45849] min-h-[350px] xl:w-[60%] flex">
-        <div className="w-[40%]  border-r-4 border-black">
-          <img src={item.img} />
+    <div className=" flex justify-center items-center">
+      <section className="bg-gradient-to-t from-[#92022E] to-[#F45849] md:min-h-[350px] w-[90vw] xl:w-[60%] flex rounded-2xl">
+        <div className="w-[40%] border-r-4 border-black">
+          <img
+            src={item.img}
+            className="h-[40vh] md:h-[55vh] w-full rounded-tl-2xl rounded-bl-2xl "
+          />
         </div>
 
         {/* <div className="w-[5px] hidden md:block absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-gray-700 h-[80%]" /> */}
 
-        <div className="w-[60%] flex flex-col border-2 border-[blue] justify-start items-center">
-          <h1 className="text-[2.5em]">{item.Title}</h1>
-          <p>{item.Description}</p>
+        <div className="w-[60%] flex flex-col gap-[2vh] sm:gap-[4vh] md:gap-[6vh] justify-start items-center">
+          <h1
+            style={{ fontSize: "clamp(1rem, 0.5rem + 2.5vw, 3.5rem)" }}
+            className="text-center md:text-start">
+            {item.Title}
+          </h1>
+          <p
+            style={{ fontSize: "clamp(1rem, 0.86rem + 0.7vw, 1.7rem)" }}
+            className=" mx-[2%] md:mx-[4%] ">
+            {item.Description} {width}
+          </p>
         </div>
       </section>
     </div>

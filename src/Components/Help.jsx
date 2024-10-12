@@ -1,4 +1,4 @@
-import React, { useRef, useLayoutEffect } from "react";
+import React, { useState, useEffect, useRef, useLayoutEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useMediaQuery } from "@uidotdev/usehooks";
@@ -14,7 +14,6 @@ const useGsap = (pinContainerRef, pinElementRef, isSmallDevice) => {
         end: "bottom bottom",
         pin: pinElementRef.current,
         scrub: 0.5,
-        markers: true,
       });
 
       // Clean up ScrollTrigger on unmount
@@ -31,7 +30,22 @@ function Help() {
   const isSmallDevice = useMediaQuery("only screen and (max-width: 768px)");
 
   // Use the custom hook for GSAP
-  // useGsap(pinContainer, pinElement, isSmallDevice);
+  useGsap(pinContainer, pinElement, isSmallDevice);
+
+  const [width, setWidth] = useState(0);
+  useEffect(() => {
+    const handleResize = () => {
+      setWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+    // Get initial width
+    handleResize();
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   return (
     <section
@@ -41,7 +55,7 @@ function Help() {
         <div
           ref={pinElement}
           className="md:border-l-[5px] border-[red] w-full md:max-w-[40em] xl:max-w-[48em] flex items-center justify-center">
-          <h1 className="text-[3em] md:text-[3.5rem] lg:text-[5rem] xl:text-[7rem] tracking-tighter leading-[1.02] ml-[30px]">
+          <h1 className="text-[3em] md:text-[7.2vw] lg:text-[7.2vw] xl:text-[8vw] 2xl:text-[7rem] tracking-tighter leading-[1.02] ml-[30px]">
             I CAN HELP YOU WITH
           </h1>
         </div>

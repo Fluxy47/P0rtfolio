@@ -19,9 +19,10 @@ function About() {
           borderRadius: ["100%", "50%", "2%"],
           minHeight: "65dvh",
         }}
-        className=" bg-[#B22222] flex justify-center items-center text-[3em] text-white">
-        <div className="max-w-[60%]">
-          <p>
+        className=" bg-[#B22222] flex justify-center items-center  text-white">
+        <div className="mx-[20px] md:mx-0 text-center md:max-w-[60%]">
+          <p
+            style={{ fontSize: " clamp(1.875rem, 1.55rem + 1.625vw, 3.5rem)" }}>
             When working with me you will get a modern website that is
             responsive, secure, meets the needs of your clients, reflects your
             brand and its values and stands out among competitors

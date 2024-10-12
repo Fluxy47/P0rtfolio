@@ -5,7 +5,7 @@ import useTextRevealAnimation from "../utils/useTextRevealAnimation";
 function Home({ setDisplayNav }) {
   const { AnimatedText } = useTextRevealAnimation(
     "Muhammad Asad",
-    "relative text-[#B22222] text-[10vw] tracking-wide font-bold"
+    "relative text-[#B22222] text-[15vw] md:text-[10vw] text-center tracking-wide font-bold"
   ); // Pass in the text
   const [width, setWidth] = useState(0);
   useEffect(() => {
@@ -23,24 +23,27 @@ function Home({ setDisplayNav }) {
   }, []);
 
   return (
-    <section className="relative min-h-screen w-full bg-[#ffecdd]">
+    <section id="Home" className="relative min-h-screen w-full bg-[#ffecdd]">
       {/* <motion.div
          initial={{ y: "100vh" }}
          animate={{ y: 0 }}
         transition={{ delay: 1 }}
         className="absolute inset-0 bg-[#ffecdd] z-[1]"
       /> */}
-      <section className="flex w-full items-center justify-between z-20">
-        <div className="flex md:ml-[20px] lg:ml-[40px] mt-[20px] items-center justify-center gap-x-[10px] lg:gap-x-[2.2em] text-[#B22222] font-semibold tracking-wide text-[17px] z-20">
-          <h2>Game Dev</h2>
+      <section className="fixed top-0 flex w-full items-center justify-between  z-[110]">
+        <div className="flex ml-[3%] md:ml-[20px] lg:ml-[40px] mt-[20px] items-center justify-center gap-x-[10px] lg:gap-x-[2.2em] text-[#B22222] font-semibold tracking-wide text-[17px] z-20">
+          <div className="max-w-[40px] text-center">
+            <h2>Game Dev</h2>
+          </div>
           <div className="h-[1px] w-[42px] bg-[#B22222]"></div>
-          <h2>Project Manager</h2>
+          <div className="max-w-[40px] text-center">
+            <h2>Project Manager</h2>
+          </div>
         </div>
         {/* burger menu */}
         <div
           onClick={() => setDisplayNav((prevState) => !prevState)}
-          className="absolute left-[55%] lg:left-1/2 -translate-x-1/2 flex flex-col gap-y-[6px] mt-[20px] z-[110]"
-        >
+          className="fixed left-[55%] lg:left-1/2 -translate-x-1/2 flex flex-col gap-y-[6px] mt-[20px] z-[110] ">
           <motion.div
             whileHover={{ left: 6 }}
             className="h-[2px] w-[12px] bg-[#B22222] relative"
@@ -52,7 +55,7 @@ function Home({ setDisplayNav }) {
           />
         </div>
 
-        <div className="text-[#B22222] font-semibold tracking-wide mr-[40px] mt-[20px] z-20">
+        <div className="text-[#B22222] font-semibold tracking-wide mr-[3%] md:mr-[40px] mt-[20px] z-20">
           <h2>Loreus polerum</h2>
         </div>
       </section>
@@ -69,8 +72,8 @@ function Home({ setDisplayNav }) {
       </section>
 
       <div className="flex flex-col absolute bottom-[4%]  w-[95%] mx-auto left-1/2 -translate-x-1/2 z-20">
-        <section className="flex items-start justify-start w-full">
-          <div className="max-w-xs p-4 flex-shrink-0 leading-tight">
+        <section className=" flex items-center justify-center md:items-start md:justify-start w-full">
+          <div className=" max-w-[400px] text-center md:text-start md:max-w-xs p-4 flex-shrink-0 leading-tight">
             <p className="text-[#B22222] font-semibold tracking-wide text-[24px]">
               I design clean modern websites that embody the essence of your
               brand
@@ -78,18 +81,18 @@ function Home({ setDisplayNav }) {
           </div>
         </section>
 
-        <section className=" bottom-0 flex w-full items-center justify-between ">
+        <section className=" bottom-0 flex flex-col md:flex-row w-full items-center justify-between ">
           <button className="w-60 h-12  rounded-full  border-[1px] border-[red]  font-[450] text-lg  ">
             <span className="text-[#B22222] font-semibold tracking-wide">
               + 44 7774069318
             </span>
           </button>
 
-          <h1 className="text-[#B22222] font-semibold tracking-wide">
+          <h1 className="text-[#B22222] font-semibold tracking-wide hidden md:block">
             Lorem <br /> lorem ispum
           </h1>
 
-          <h1 className="text-[#B22222] font-semibold tracking-wide leading-tight">
+          <h1 className="text-[#B22222] font-semibold tracking-wide leading-tight hidden md:block">
             Based In Uk <br /> available around the World
           </h1>
         </section>

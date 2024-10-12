@@ -16,14 +16,13 @@ const useTextRevealAnimation = (text, textclass, options = {}) => {
   const AnimatedText = () => (
     <div
       ref={ref}
-      className="relative w-full overflow-hidden flex justify-center items-center"
-    >
+      className="relative w-full overflow-hidden flex justify-center items-center">
       {/* Masking element (pseudo-element equivalent) */}
       <motion.div
         key={key} // Change key to restart animation
         initial={{ x: 0 }}
         animate={{ x: "100%" }}
-        transition={{ duration: 4, ease: "easeOut", delay: 1 }}
+        transition={{ duration: 1.5, ease: "easeOut", delay: 1 }}
         className="absolute top-0 left-0 w-full h-full bg-[#ffecdd] z-[20]"
       />
 
@@ -33,8 +32,7 @@ const useTextRevealAnimation = (text, textclass, options = {}) => {
         initial={{ letterSpacing: "5px" }}
         animate={{ letterSpacing: 0 }}
         transition={{ duration: 1, ease: "easeOut", delay: 1.3 }}
-        className={`${textclass}`}
-      >
+        className={`${textclass}`}>
         {text}
       </motion.h1>
     </div>
