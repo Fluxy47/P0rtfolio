@@ -21,6 +21,7 @@ function Home({ setDisplayNav }) {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+  const [Open, setOpen] = useState(false);
 
   return (
     <section id="Home" className="relative min-h-screen w-full bg-[#ffecdd]">
@@ -30,33 +31,31 @@ function Home({ setDisplayNav }) {
         transition={{ delay: 1 }}
         className="absolute inset-0 bg-[#ffecdd] z-[1]"
       /> */}
-      <section className="fixed top-0 flex w-full items-center justify-between  z-[110]">
+      <section className="absolute top-0 flex w-full items-center justify-between  z-[110]">
         <div className="flex ml-[3%] md:ml-[20px] lg:ml-[40px] mt-[20px] items-center justify-center gap-x-[10px] lg:gap-x-[2.2em] text-[#B22222] font-semibold tracking-wide text-[17px] z-20">
-          <div className="max-w-[40px] text-center">
+          <div className="max-w-[40px] md:max-w-none text-center">
             <h2>Game Dev</h2>
           </div>
           <div className="h-[1px] w-[42px] bg-[#B22222]"></div>
-          <div className="max-w-[40px] text-center">
-            <h2>Project Manager</h2>
+          <div className="max-w-[40px] md:max-w-none text-center">
+            <h2>Game Designer</h2>
           </div>
         </div>
         {/* burger menu */}
         <div
           onClick={() => setDisplayNav((prevState) => !prevState)}
-          className="fixed left-[55%] lg:left-1/2 -translate-x-1/2 flex flex-col gap-y-[6px] mt-[20px] z-[110] ">
+          onMouseEnter={() => setOpen(true)}
+          onMouseLeave={() => setOpen(false)}
+          className="fixed right-[4%]  flex flex-col gap-y-[6px] mt-[20px] z-[110] cursor-pointer">
           <motion.div
-            whileHover={{ left: 6 }}
+            animate={{ left: Open ? 6 : 0 }}
             className="h-[2px] w-[12px] bg-[#B22222] relative"
           />
           <div className="h-[2px] w-[22px] bg-[#B22222]" />
-          <div
-            whileHover={{ right: 6 }}
-            className="h-[2px] w-[12px] bg-[#B22222] ml-[10px]"
+          <motion.div
+            animate={{ marginLeft: Open ? 6 : 10 }}
+            className="h-[2px] w-[12px] bg-[#B22222] "
           />
-        </div>
-
-        <div className="text-[#B22222] font-semibold tracking-wide mr-[3%] md:mr-[40px] mt-[20px] z-20">
-          <h2>Loreus polerum</h2>
         </div>
       </section>
 
@@ -71,22 +70,23 @@ function Home({ setDisplayNav }) {
         </div> */}
       </section>
 
-      <div className="flex flex-col absolute bottom-[4%]  w-[95%] mx-auto left-1/2 -translate-x-1/2 z-20">
-        <section className=" flex items-center justify-center md:items-start md:justify-start w-full">
+      <div className="flex absolute bottom-[4%]  w-[95%] mx-auto left-1/2 -translate-x-1/2 z-20">
+        {/* <section className=" flex items-center justify-center md:items-start md:justify-start w-full">
           <div className=" max-w-[400px] text-center md:text-start md:max-w-xs p-4 flex-shrink-0 leading-tight">
             <p className="text-[#B22222] font-semibold tracking-wide text-[24px]">
               I design clean modern websites that embody the essence of your
               brand
             </p>
           </div>
-        </section>
+        </section> */}
 
-        <section className=" bottom-0 flex flex-col md:flex-row w-full items-center justify-between ">
-          <button className="w-60 h-12  rounded-full  border-[1px] border-[red]  font-[450] text-lg  ">
-            <span className="text-[#B22222] font-semibold tracking-wide">
-              + 44 7774069318
-            </span>
-          </button>
+        <section className=" flex flex-col md:flex-row w-full items-center justify-between ">
+          <div className=" max-w-[400px] text-center md:text-start md:max-w-xs p-4 flex-shrink-0 leading-tight">
+            <p className="text-[#B22222] font-semibold tracking-wide text-[24px]">
+              I design clean modern websites that embody the essence of your
+              brand
+            </p>
+          </div>
 
           <h1 className="text-[#B22222] font-semibold tracking-wide hidden md:block">
             Lorem <br /> lorem ispum

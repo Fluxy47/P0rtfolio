@@ -19,22 +19,23 @@ function NavBar({ lenis, setDisplayNav }) {
       }, 1000); // 1 second delay before scrolling
     }
   };
-
+  // text-[#06061C]
   return (
     <motion.div
       variants={container2}
       initial="initial"
       animate="animate"
       exit="exit"
-      className="h-screen text-[#06061C]  bg-[#720026] fixed z-[100] w-full flex flex-col-reverse gap-[20px] md:flex-row  items-center justify-evenly">
-      <section className="flex flex-col lg:gap-[2em] ">
-        <div className="flex flex-col gap-[0.5em] relative top-[4%] md:top-0">
-          <motion.h1
-            variants={navAnimation}
-            className="text-[2em] md:text-[3.5em] lg:text-[2em]  text-center font-semibold  md:tracking-widest ">
-            Skills
-          </motion.h1>
-          <div className="flex gap-[1.2em]">
+      className="h-screen text-[#ffecdd]  bg-[#720026] fixed z-[100] w-full flex flex-col-reverse gap-[20px] md:flex-row  items-center justify-evenly">
+      <section className="flex flex-col lg:gap-[4em] xl:gap-[6em] ">
+        <motion.button
+          initial={{ letterSpacing: "0.2em" }}
+          whileHover={{ letterSpacing: "0.3em" }}
+          variants={navAnimation}
+          className=" text-center text-[2em] md:text-[2em] lg:text-[2.5em]   font-semibold bg-transparent p-0 ">
+          RESUME
+        </motion.button>
+        {/* <div className="flex gap-[1.2em]">
             {skills.map((item, idx) => (
               <motion.p
                 variants={navAnimation}
@@ -43,8 +44,7 @@ function NavBar({ lenis, setDisplayNav }) {
                 {item}
               </motion.p>
             ))}
-          </div>
-        </div>
+          </div> */}
 
         <div className="flex flex-col gap-[0.5em]">
           <motion.h1

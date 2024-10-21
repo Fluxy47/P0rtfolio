@@ -47,6 +47,24 @@ function Help() {
     };
   }, []);
 
+  const help = [
+    {
+      title: "Games Design",
+      num: "01",
+      text: "I specialize in crafting engaging and innovative game concepts, ensuring that each project delivers a unique and captivating player experience. My services include comprehensive game design documentation, mechanic development, and creative direction to bring your vision to life.",
+    },
+    {
+      title: "Level Design",
+      num: "02",
+      text: "I provide expert level design services, creating immersive and challenging environments that enhance gameplay and keep players invested. From initial layout to intricate detailing, I focus on designing levels that are both visually stunning and strategically sound.",
+    },
+    {
+      title: "Game Development",
+      num: "03",
+      text: "With extensive experience in Unity and a readiness to explore other engines, I offer full-cycle game development services. From coding and prototyping to final polish and deployment, I ensure your game runs smoothly and meets the highest standards of quality.",
+    },
+  ];
+
   return (
     <section
       ref={pinContainer}
@@ -61,29 +79,24 @@ function Help() {
         </div>
       </section>
       <section className="flex flex-col md:mt-[16em] md:mr-[80px] mx-[20px] gap-[4em] md:gap-0">
-        {Array(3)
-          .fill(0)
-          .map((_, index) => (
-            <div
-              key={index}
-              className="md:h-screen flex items-center justify-center">
-              <div className="w-full md:max-w-[29em] 2xl:max-w-[33em] flex flex-col gap-[1em] justify-start">
-                <p className="text-[#adb4b6] text-[0.8em]">{index + 1}</p>
-                <div className="h-[1px] w-full bg-[#adb4b6]" />
-                <h2 className="text-[2em] md:text-[3vw] 2xl:text-[2.5vw] font-[450]">
-                  Design
-                </h2>
-                <div className="w-full max-w-[50em]">
-                  <p className="md:text-[2vw] lg:text-[1.7vw] xl:text-[1.5vw] 2xl:text-[1.25vw]">
-                    With a solid track record in designing websites and apps, I
-                    deliver strong and user-friendly digital designs. Solid
-                    company branding is the foundation of any successful
-                    website.
-                  </p>
-                </div>
+        {help.map((item) => (
+          <div
+            key={item.title}
+            className="md:h-screen flex items-center justify-center">
+            <div className="w-full md:max-w-[29em] 2xl:max-w-[33em] flex flex-col gap-[1em] justify-start">
+              <p className="text-[#adb4b6] text-[0.8em]">{item.num}</p>
+              <div className="h-[1px] w-full bg-[#adb4b6]" />
+              <h2 className="text-[2em] md:text-[3vw] 2xl:text-[2.5vw] font-[450]">
+                {item.title}
+              </h2>
+              <div className="w-full max-w-[50em]">
+                <p className="md:text-[2vw] lg:text-[1.7vw] xl:text-[1.5vw] 2xl:text-[1.25vw]">
+                  {item.text}
+                </p>
               </div>
             </div>
-          ))}
+          </div>
+        ))}
       </section>
     </section>
   );
